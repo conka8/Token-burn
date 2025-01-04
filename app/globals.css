@@ -3,19 +3,39 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  font-size: 16px;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Clarkson", Helvetica, sans-serif;
+}
+[aria-label="hamburger-menu"] {
+  @apply w-[16px] flex-col gap-y-1 cursor-pointer lg:hidden flex items-center;
+}
+[aria-label="hamburger-menu"] div {
+  background-color: #121212;
+  height: 2px;
+  width: 100%;
+  align-items: center;
+  transition: 0.3s all ease-in-out;
+  transform-origin: center center;
+  margin: 0 0 !important;
+}
+
+[aria-label="hamburger-menu"] div:first-child {
+  width: 80%;
+}
+[aria-label="hamburger-menu"] div:nth-child(2) {
+}
+[aria-label="hamburger-menu"] div:last-child {
+  width: 80%;
+}
+[aria-label="hamburger-menu"].openMenu div:first-child {
+  @apply rotate-[45deg] translate-y-[6px] w-full;
+}
+[aria-label="hamburger-menu"].openMenu div:nth-child(2) {
+  visibility: hidden;
+}
+[aria-label="hamburger-menu"].openMenu div:last-child {
+  @apply rotate-[-45deg] translate-y-[-6px] w-full;
 }
